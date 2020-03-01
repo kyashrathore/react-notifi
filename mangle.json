@@ -1,0 +1,13 @@
+{
+  "minify": {
+    "mangle": {
+      "properties": {
+        "regex": "^_"
+      }
+    },
+    "compress": {
+      "hoist_vars": true,
+      "reduce_funcs": false
+    }
+  }
+}
