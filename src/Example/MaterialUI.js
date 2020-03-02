@@ -1,4 +1,6 @@
 import React from "react";
+import { CheckIcon, CrossIcon, WarningIcon, InfoIcon } from "./Icons";
+import { notifi } from "./from-where-you-initiaed-class";
 
 export default function MaterialUIDefault({ type, children }) {
   return (
@@ -37,11 +39,7 @@ export default function MaterialUIDefault({ type, children }) {
           </span>
         </div>
         <div className="mui-action">
-          <button
-            tabIndex="0"
-            type="button"
-            //   style="color: white;"
-          >
+          <button tabIndex="0" type="button" onClick={() => notifi.close(key)}>
             <span>Got it</span>
             <span></span>
           </button>
