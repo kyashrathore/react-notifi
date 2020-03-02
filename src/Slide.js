@@ -1,51 +1,51 @@
 import React, { useState } from "react";
 
-const SlideOnExitAndEnterAndCollapseOnExit = React.memo(
+export const SlideOnExitAndEnterAndCollapseOnExit = React.memo(
   React.forwardRef(function SlideAndCollapseOnExit(props, ref) {
-    const { children, open, id, hPos, vPos } = props;
+    const { open, hPos, vPos, wrapper, detach, _message, type, id } = props;
     const [state, setState] = useState("enter");
     const cref = React.useRef();
 
     const collapseExitStart = () => {
       const node = cref.current;
-      node.style.transitionDuration = `195ms`;
+      node.style.transitionDuration = `175ms`;
       node.style.height = `${node.clientHeight}px`;
     };
 
     const collapseExiting = () => {
       const node = cref.current;
-      node.style.transitionDuration = "195ms";
+      node.style.transitionDuration = "175ms";
       node.style.height = 0;
     };
 
     React.useEffect(() => {
-      setTimeout(() => {
-        setState("entered");
-      }, 0);
+      requestIdleCallback(() => setState("entered"));
     }, []);
 
     React.useEffect(() => {
       if (open === false) {
         setState("exit");
         collapseExitStart();
-        setTimeout(collapseExiting);
+        requestIdleCallback(collapseExiting);
         setTimeout(() => {
-          props.detach();
-        }, 200);
+          detach();
+        }, 300);
       }
     }, [open]);
+    let child =
+      typeof wrapper === "function"
+        ? wrapper({ message: _message, key: id, type })
+        : _message;
     return (
       <div ref={cref} className="nt-cl-ctnr">
         <div
-          key={id}
-          className={`nt nt-${hPos}-${state} ${vPos} nt-cl-wrapper`}
+          className={`nt nt-${vPos}-${hPos} ${state} nt-cl-wrapper`}
           ref={ref}
         >
-          {children}
+          {child}
         </div>
       </div>
     );
   })
 );
-
 export default SlideOnExitAndEnterAndCollapseOnExit;

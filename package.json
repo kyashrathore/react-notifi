@@ -1,6 +1,6 @@
 {
   "name": "react-notifi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tiny (1.4kb) toast library for react notifications with animations and stackable toast's feature.",
   "source": "src/index.js",
   "main": "dist/index.js",

@@ -14,6 +14,7 @@ React-notifi is best of both world with built in required animations, stack-able
 - Stackable toast Notifications like (https://github.com/iamhosseindhv/notistack)[Notistack] which follows material ui guidelines.
 - Can be fired outside of react tree.
 
+
 ```sh
 npm i react-notifi
 ```
@@ -22,10 +23,13 @@ npm i react-notifi
 import { Notifi, EnqueNotifi } from "noti-fi";
 
 const notifi = new EnqueNotifi({
-  maxSnack: 2, // more will be queued
-  position: "bottomLeft",
+  maxSnack: 3,
+  position: "bottomLeft" |"bottomCenter"|"bottomRight"| |"topLeft"|"topCenter"|"topRight",
   preventDuplicate: true,
-  autoHideDuration: 3000
+  autoHideDuration: 3000,
+   wrapper: ({ message, ...rest }) => {
+    return <DefaultSnack {...rest}>{message}</DefaultSnack>;
+  }
 });
 
 function App() {
@@ -34,7 +38,7 @@ function App() {
     notifi.enqueue(
         <Button text="hide" onClick={() notifi.close(key)} />, {
       key
-      //other options
+      //other options like type
     });
   };
   return (
@@ -45,3 +49,11 @@ function App() {
   );
 }
 ```
+
+`NotifiEnqueue` is a class through which `react-notifi` manages queue of toast and not with React Context that's why you can call `notifi.enqueue` and  `notifi.close` outside of react tree also.Intiate this class and provide your default options.
+
+*Remember `react-notifi` comes with no css. You can provide a default component in wrapper to which your options will be passed then.*
+
+You can you use this Material Ui default component and CSS, which is used in [official examples ](https://github.com/contactyash/react-notifi-site)
+
+ `Notifi` is a component which renders nothing. It just subscribe to `NotifiEnqueue` class and updates toasts.

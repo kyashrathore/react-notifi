@@ -1,16 +1,13 @@
+/* container styles */
 .nt-ctnr {
-  width: auto;
   height: auto;
   display: flex;
   position: fixed;
   max-width: 100%;
   min-width: 288px;
-  box-sizing: border-box;
   max-height: 100%;
   flex-direction: column;
   z-index: 1400;
-  transition: top 0.3s ease 0ms, right 0.3s ease 0ms, bottom 0.3s ease 0ms,
-    left 0.3s ease 0ms;
 }
 .nt-ctnr.nt-bottom {
   flex-direction: column-reverse;
@@ -25,51 +22,59 @@
 .nt-ctnr.nt-right {
   right: 20px;
 }
+
 @media (min-width: 960px) {
   .nt-ctnr.nt-center {
     left: 50%;
     transform: translateX(-50%);
   }
 }
+/* container styles */
+/* notit-toast styles */
+
 .nt {
-  min-height: 35px;
-  min-width: 225px;
-  background-color: #000;
-  color: #fff;
+  color: #000;
   z-index: 1400;
-  margin: 10px 0;
   transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
-.nt-left-enter,
-.nt-left-exit {
+.nt-top-left.enter,
+.nt-bottom-left.enter,
+.nt-top-left.exit,
+.nt-bottom-left.exit {
   transform: translateX(-110%);
 }
 
-.nt-right-enter,
-.nt-right-exit {
+.nt-top-right.enter,
+.nt-top-right.exit,
+.nt-bottom-right.enter,
+.nt-bottom-right.exit {
   transform: translateX(110%);
 }
+.nt-top-center.enter,
+.nt-top-center.exit {
+  transform: translateY(-600%);
+}
+.nt-bottom-center.enter,
+.nt-bottom-center.exit {
+  transform: translateY(600%);
+}
+.nt-top-left.entered,
+.nt-top-center.entered,
+.nt-top-right.entered,
+.nt-bottom-left.entered,
+.nt-bottom-center.entered,
+.nt-bottom-right.entered {
+  transform: "none";
+  overflow: auto;
+}
 
-.nt-center-enter,
-.nt-center-exit {
-  transform: translateY(1000%);
-}
-.nt-center-exit {
-  transform: translateY(1000%);
-}
-.nt-center-enter.top {
-  transform: translateY(-1000%);
-}
-.nt-center-exit.top {
-  transform: translateY(-1000%);
-}
-
-/* ----------------- */
 .nt-cl-ctnr {
-  transition: height 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
   display: flex;
 }
 .nt-cl-wrapper {
   width: 100%;
 }
+/* notit-toast styles */
