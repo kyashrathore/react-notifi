@@ -5,13 +5,15 @@ Cogo toast doesn't have these animations and stackable feature.
 
 React-notifi is best of both world with built in required animations, stack-able toasts, still 1.4kb in size.
 
+Check Demo [Here](https://5e5d752a6a336db51a36feaf--elated-lumiere-38d721.netlify.com/)
+[Github Link](https://github.com/contactyash/react-notifi)
 # Goals
 
 - Tiny (size less than 1.5kb)
 - No dependency
 - Minimal HTML and CSS or SVG(can be provided in examples)
 - Good slide in slide out animations
-- Stackable toast Notifications like (https://github.com/iamhosseindhv/notistack)[Notistack] which follows material ui guidelines.
+- Stackable toast Notifications like [Notistack] (https://github.com/iamhosseindhv/notistack)which follows material ui guidelines.
 - Can be fired outside of react tree.
 
 
@@ -23,7 +25,7 @@ npm i react-notifi
 import { Notifi, EnqueNotifi } from "noti-fi";
 
 const notifi = new EnqueNotifi({
-  maxSnack: 3,
+  maxToast: 3,
   position: "bottomLeft" |"bottomCenter"|"bottomRight"| |"topLeft"|"topCenter"|"topRight",
   preventDuplicate: true,
   autoHideDuration: 3000,
@@ -54,6 +56,6 @@ function App() {
 
 *Remember `react-notifi` comes with no css. You can provide a default component in wrapper to which your options will be passed then.*
 
-You can you use this Material Ui default component and CSS, which is used in [official examples ](https://github.com/contactyash/react-notifi-site)
+You can you use this Material Ui default component and CSS, which is used in [official examples ](https://github.com/contactyash/react-notifi/tree/master/src/Example)
 
  `Notifi` is a component which renders nothing. It just subscribe to `NotifiEnqueue` class and updates toasts.

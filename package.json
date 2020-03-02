@@ -1,6 +1,6 @@
 {
   "name": "react-notifi",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Tiny (1.4kb) toast library for react notifications with animations and stackable toast's feature.",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -35,10 +35,10 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
+    "@babel/core": "^7.8.6",
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.7.6",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-env": "^7.8.6",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.8.3",
     "@babel/runtime": "^7.7.7",
