@@ -5,7 +5,7 @@ Cogo toast doesn't have these animations and stackable feature.
 
 React-notifi is best of both world with built in required animations, stack-able toasts, still 1.4kb in size.
 
-Check Demo [Here](https://5e5d752a6a336db51a36feaf--elated-lumiere-38d721.netlify.com/)
+Check Demo [Here](https://react-notifi.netlify.com/)
 
 [Github Link](https://github.com/contactyash/react-notifi)
 
