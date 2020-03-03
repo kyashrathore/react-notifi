@@ -56,7 +56,7 @@ export function Notifi() {
         >
           {snacks.map(snack => (
             <SlideAnimation
-              key={snack.key}
+              key={snack.id}
               hPos={hPos}
               vPos={vPos}
               {...snack}
@@ -66,7 +66,6 @@ export function Notifi() {
       );
     });
   };
-
   useEffect(() => {
     return notifier.subscribe(s => {
       setSnacks([...s]);

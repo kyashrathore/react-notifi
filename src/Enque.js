@@ -14,9 +14,9 @@ export class EnqueNotifi {
     this._timer = null;
   }
 
-  close(key) {
+  close(id) {
     clearTimeout(this._timer);
-    this._hideSnack(key);
+    this._hideSnack(id);
   }
 
   enqueue(message, o) {
@@ -25,12 +25,12 @@ export class EnqueNotifi {
     clearTimeout(this._timer);
     if (
       options.preventDuplicate &&
-      this._snacks.find(s => s.key === options.key)
+      this._snacks.find(s => s.id === options.id)
     )
       return;
-    const key = options.key || ++__snackId;
+    const id = options.id || ++__snackId;
     const currentSnack = {
-      key,
+      id,
       _message: message,
       position: this._props.position,
       wrapper: this._props.wrapper,
@@ -50,24 +50,24 @@ export class EnqueNotifi {
     const oldest = this._snacks[0];
 
     if (oldest) {
-      this._hideSnack(oldest.key);
+      this._hideSnack(oldest.id);
     } else {
       //no snack left update last detached update
       this._dispatch();
     }
   }
-  _hideSnack(key) {
+  _hideSnack(id) {
     // return if any snack is detaching(transitioning)
     if (this._snacks.filter(s => s.open === false).length) {
-      this._resumedHiding.push(key);
+      this._resumedHiding.push(id);
       return;
     }
     this._snacks = this._snacks.map(snack => {
-      if (snack.key === key) {
+      if (snack.id === id) {
         return {
           ...snack,
           detach: () => {
-            this._snacks = this._snacks.filter(snack => snack.key !== key);
+            this._snacks = this._snacks.filter(snack => snack.id !== id);
             this._proceedQueue();
           },
           open: false

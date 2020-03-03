@@ -34,7 +34,7 @@ export const SlideOnExitAndEnterAndCollapseOnExit = React.memo(
     }, [open]);
     let child =
       typeof wrapper === "function"
-        ? wrapper({ message: _message, key: id, type })
+        ? wrapper({ message: _message, id, type })
         : _message;
     return (
       <div ref={cref} className="nt-cl-ctnr">

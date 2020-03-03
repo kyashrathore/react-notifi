@@ -24,6 +24,7 @@ npm i react-notifi
 
 ```js
 import { Notifi, EnqueNotifi } from "noti-fi";
+import "react-notifi/dist/index.css";
 
 const notifi = new EnqueNotifi({
   maxToast: 3,
@@ -37,7 +38,6 @@ const notifi = new EnqueNotifi({
 
 function App() {
   const handleShowNotification = () => {
-    const key = "showBtn";
     notifi.enqueue('Here is your notification');
   };
   return (
