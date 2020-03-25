@@ -1,5 +1,7 @@
 import React from "react";
-export function CheckIcon(props) {
+import { notifi } from "where you initialize Enqueue Class";
+
+function CheckIcon(props) {
   return (
     <svg
       className="prefix__MuiSvgIcon-root"
@@ -19,7 +21,7 @@ export function CheckIcon(props) {
     </svg>
   );
 }
-export function CrossIcon(props) {
+function CrossIcon(props) {
   return (
     <svg
       className="prefix__MuiSvgIcon-root"
@@ -39,7 +41,7 @@ export function CrossIcon(props) {
     </svg>
   );
 }
-export function WarningIcon(props) {
+function WarningIcon(props) {
   return (
     <svg
       className="prefix__MuiSvgIcon-root"
@@ -59,7 +61,7 @@ export function WarningIcon(props) {
     </svg>
   );
 }
-export function InfoIcon(props) {
+function InfoIcon(props) {
   return (
     <svg
       className="prefix__MuiSvgIcon-root"
@@ -77,5 +79,52 @@ export function InfoIcon(props) {
     >
       <path d="M11 9h2V7h-2m1 13c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m0-18A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2m-1 15h2v-6h-2v6z" />
     </svg>
+  );
+}
+
+export default function MaterialUIDefault({ type, children }) {
+  return (
+    <div
+      className="mui-wrapper"
+      role="alertdialog"
+      aria-describedby="client-snackbar"
+      style={{
+        backgroundColor:
+          type === "success"
+            ? "#43a047"
+            : type === "error"
+            ? "#d32f2f"
+            : type === "warning"
+            ? "#ffa000"
+            : type === "info"
+            ? "#2979ff"
+            : "black"
+      }}
+    >
+      <div className="mui-inner">
+        <div className="mui-message">
+          <span className="mui-message-inner">
+            {type === "success" ? (
+              <CheckIcon color="white" />
+            ) : type === "error" ? (
+              <CrossIcon color="white" />
+            ) : type === "warning" ? (
+              <WarningIcon color="white" />
+            ) : type === "info" ? (
+              <InfoIcon color="white" />
+            ) : (
+              ""
+            )}
+            {children}
+          </span>
+        </div>
+        <div className="mui-action">
+          <button tabIndex="0" type="button" onClick={() => notifi.close(key)}>
+            <span>Got it</span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
