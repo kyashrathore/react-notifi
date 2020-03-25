@@ -33,7 +33,7 @@ export class EnqueNotifi {
       ...options,
       id: options.id || ++__snackId,
       _message: message,
-      _position: o.position || this._props._position,
+      _position: options.position || this._props._position,
       _wrapper: this._props._wrapper
     };
     if (this._snacks.length < this._props._maxSnack) {
