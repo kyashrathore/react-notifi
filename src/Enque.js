@@ -29,9 +29,10 @@ export class EnqueNotifi {
     let options = o || {};
     if (options.preventDuplicate && this._snacks.find(s => s.id === options.id))
       return;
+    const id = options.id || ++__snackId;
     const currentSnack = {
       ...options,
-      id: options.id || ++__snackId,
+      id,
       _message: message,
       _position: options.position || this._props._position,
       _wrapper: this._props._wrapper,
