@@ -34,7 +34,8 @@ export class EnqueNotifi {
       id: options.id || ++__snackId,
       _message: message,
       _position: options.position || this._props._position,
-      _wrapper: this._props._wrapper
+      _wrapper: this._props._wrapper,
+      close: () => this.close(id)
     };
     if (this._snacks.length < this._props._maxSnack) {
       this._snacks.push(currentSnack);

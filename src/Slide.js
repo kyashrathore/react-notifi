@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 
 const SlideAnimation = React.memo(function(props) {
-  const { open, hPos, vPos, _wrapper, detach, _message, type, id } = props;
+  const {
+    open,
+    hPos,
+    vPos,
+    _wrapper,
+    detach,
+    _message,
+    type,
+    id,
+    close
+  } = props;
   const [state, setState] = useState("enter");
   const cref = React.useRef();
 
@@ -37,7 +47,7 @@ const SlideAnimation = React.memo(function(props) {
 
   let child =
     typeof _wrapper === "function"
-      ? _wrapper({ message: _message, id, type })
+      ? _wrapper({ message: _message, id, type, close })
       : _message;
 
   return (

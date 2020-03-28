@@ -82,7 +82,7 @@ function InfoIcon(props) {
   );
 }
 
-export default function MaterialUIDefault({ type, children }) {
+export default function MaterialUIDefault({ type, children, close }) {
   return (
     <div
       className="mui-wrapper"
@@ -119,7 +119,7 @@ export default function MaterialUIDefault({ type, children }) {
           </span>
         </div>
         <div className="mui-action">
-          <button tabIndex="0" type="button" onClick={() => notifi.close(key)}>
+          <button tabIndex="0" type="button" onClick={close}>
             <span>Got it</span>
             <span></span>
           </button>
