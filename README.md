@@ -53,6 +53,6 @@ function App() {
 
 _Remember `react-notifi` comes with no css. You can provide a default component in wrapper to which your options will be passed then._
 
-You can you use [this Material Ui default component and CSS](<(https://github.com/contactyash/react-notifi/tree/master/src/Example)>), which is used in [official examples ](https://5e5d752a6a336db51a36feaf--elated-lumiere-38d721.netlify.com/)
+You can you use [this Material Ui default component and CSS](<(https://github.com/contactyash/react-notifi/tree/master/src/Example)>), which is used in [official examples ](https://react-notifi.netlify.com/)
 
 `Notifi` is a component which renders nothing. It just subscribe to `NotifiEnqueue` class and updates toasts.
