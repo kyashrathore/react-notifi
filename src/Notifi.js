@@ -1,12 +1,11 @@
-import reactUtils from './reactlocal';
+import React from 'react';
 import SlideAnimation from './Slide';
 import { notifier } from './notifier';
-const React = reactUtils._React;
 
 export function Notifi() {
-  const [snacks, setSnacks] = reactUtils._useState([]);
+  const [snacks, setSnacks] = React.useState([]);
 
-  reactUtils._useEffect(() => {
+  React.useEffect(() => {
     return notifier._subscribe(s => {
       setSnacks([].concat(s));
     });

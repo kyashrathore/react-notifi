@@ -1,18 +1,17 @@
-import reactUtils from './reactlocal';
-const React = reactUtils._React;
+import React from 'react';
 export default function SlideAnimation(props) {
   const { open, hPos, vPos, _wrapper, _detach, _message, type, id, close } = props.p;
-  const [state, setState] = reactUtils._useState('enter');
-  const cref = reactUtils._useRef();
+  const [state, setState] = React.useState('enter');
+  const cref = React.useRef();
 
-  reactUtils._useEffect(() => {
+  React.useEffect(() => {
     if (cref.current) {
       // once componet mounetd
       setState('entered');
     }
   }, [cref.current]);
 
-  reactUtils._useEffect(() => {
+  React.useEffect(() => {
     if (open === false) {
       setState('exit');
       const node = cref.current;

@@ -32,7 +32,7 @@ export class EnqueNotifi {
     const currentSnack = Object.assign(options, {
       id,
       _message: message,
-      _position: options.position || this._props._position,
+      _position: options.position || this._position,
       _wrapper: this._wrapper,
       close: () => this.close(id),
     });
