@@ -1,21 +1,19 @@
-export const notifier = createStore((state, action) => action);
+export const notifier = createNotifier();
 
-export function createStore(reducer) {
-  let state = reducer(undefined, {});
+export function createNotifier() {
   const subscribers = {};
   let index = 0;
   return {
-    dispatch(action) {
-      state = reducer(state, action);
+    _dispatch(state) {
       Object.keys(subscribers).forEach(key => subscribers[key](state));
     },
-    subscribe(cb) {
+    _subscribe(cb) {
       // create closure for return function
       const i = ++index;
       subscribers[i] = cb;
       return () => {
         delete subscribers[i];
       };
-    }
+    },
   };
 }

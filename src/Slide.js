@@ -1,61 +1,41 @@
-import React, { useState } from "react";
+import reactUtils from './reactlocal';
+const React = reactUtils._React;
+export default function SlideAnimation(props) {
+  const { open, hPos, vPos, _wrapper, _detach, _message, type, id, close } = props.p;
+  const [state, setState] = reactUtils._useState('enter');
+  const cref = reactUtils._useRef();
 
-const SlideAnimation = React.memo(function(props) {
-  const {
-    open,
-    hPos,
-    vPos,
-    _wrapper,
-    detach,
-    _message,
-    type,
-    id,
-    close
-  } = props;
-  const [state, setState] = useState("enter");
-  const cref = React.useRef();
+  reactUtils._useEffect(() => {
+    if (cref.current) {
+      // once componet mounetd
+      setState('entered');
+    }
+  }, [cref.current]);
 
-  const collapseExitStart = () => {
-    const node = cref.current;
-    if (!node) return;
-    node.style.transitionDuration = `175ms`;
-    node.style.height = `${node.clientHeight}px`;
-  };
-
-  const collapseExiting = () => {
-    const node = cref.current;
-    if (!node) return;
-    node.style.transitionDuration = "175ms";
-    node.style.height = 0;
-  };
-
-  React.useEffect(() => {
-    // I don't know if it is a right thing. It works.
-    setTimeout(() => setState("entered"), 10);
-  }, []);
-
-  React.useEffect(() => {
+  reactUtils._useEffect(() => {
     if (open === false) {
-      setState("exit");
-      collapseExitStart();
-      requestIdleCallback(collapseExiting);
-      setTimeout(() => {
-        detach();
-      }, 300);
+      setState('exit');
+      const node = cref.current;
+      if (!node) return;
+      node.style.height = `${node.clientHeight}px`;
+      let isSecondTransitionEnd = 0;
+      node.addEventListener('transitionend', e => {
+        if (isSecondTransitionEnd) {
+          _detach();
+        } else {
+          node.style.height = 0;
+          isSecondTransitionEnd++;
+        }
+      });
     }
   }, [open]);
 
-  let child =
-    typeof _wrapper === "function"
-      ? _wrapper({ message: _message, id, type, close })
-      : _message;
-
+  let child = _wrapper ? _wrapper({ message: _message, id, type, close }) : _message;
   return (
-    <div ref={cref} className="nt-cl-ctnr">
-      <div className={`nt nt-${vPos}-${hPos} ${state} nt-cl-wrapper`}>
+    <div className="nt-cl-ctnr">
+      <div ref={cref} className={`nt nt-${vPos}-${hPos} ${state} nt-cl-wrapper`}>
         {child}
       </div>
     </div>
   );
-});
-export default SlideAnimation;
+}

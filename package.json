@@ -8,7 +8,7 @@
   "module": "dist/index.m.js",
   "scripts": {
     "build": "microbundle",
-    "start": "microbundle -f cjs watch --compress=false --raw",
+    "start": "microbundle -f cjs watch --compress=false  --jsx React.createElement --raw",
     "lint": "eslint src/"
   },
   "keywords": [
@@ -56,5 +56,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
+  },
+  "dependencies": {
+    "microbundle": "^0.13.0"
   }
 }
